@@ -1,19 +1,19 @@
-function printMessage(msg){
+function printMessage(msg) {
 	let div = document.createElement('div');
 	div.innerHTML = msg;
 	document.getElementById('messages').appendChild(div);	
-	}
+};
 
-function clearMessages(){
+function clearMessages() {
 	document.getElementById('messages').innerHTML = '';
-}
+};
 
 function playGame(playerInput) {
 	let randomNumber = Math.floor(Math.random() * 3 + 1);
 	let computerMove = getMoveName(randomNumber);
 	let playerMove = getMoveName(playerInput);
 
-	clearMessages()
+	clearMessages();
 	
 	function getMoveName(argMoveId){
 		if(argMoveId == 1){
@@ -48,14 +48,3 @@ function playGame(playerInput) {
 
 	displayResult(computerMove, playerMove);
 }
-
-
-document.getElementById('play-rock').addEventListener('click', function() {
-	playGame(1);
-});
-document.getElementById('play-paper').addEventListener('click', function() {
-	playGame(2);
-});
-document.getElementById('play-scissors').addEventListener('click', function() {
-	playGame(3);
-});
