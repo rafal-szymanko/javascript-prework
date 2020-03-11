@@ -1,5 +1,5 @@
 function printMessage(msg){
-	const div = document.createElement('div');
+	const div = document.createElement('div'),
 		createMessages = document.getElementById('messages');
 	div.innerHTML = msg;
 	if (msg == `Wygrałeś!!!`) {
@@ -38,7 +38,7 @@ function getMoveName(argMoveId){
 function displayResult(argComputerMove, argPlayerMove){
 	game.played++;
 	printMessage(`Zagrałem ${argComputerMove}, a Ty ${argPlayerMove}`);
-  
+	
 	if (argPlayerMove == `papier` && argComputerMove == `kamień`) {
 		printMessage(`Wygrałeś!!!`);
 		game.won++;

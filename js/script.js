@@ -1,4 +1,4 @@
-let game = {
+const game = {
 	played: 0,
 	won: 0,
 	lost: 0,
