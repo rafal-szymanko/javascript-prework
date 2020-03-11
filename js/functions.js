@@ -1,26 +1,28 @@
 function printMessage(msg){
-	let div = document.createElement('div');
+	const div = document.createElement('div');
+		createMessages = document.getElementById('messages');
 	div.innerHTML = msg;
 	if (msg == `Wygrałeś!!!`) {
-		document.getElementById('messages').appendChild(div).style.color = 'green'; 
+		createMessages.appendChild(div).style.color = 'green'; 
 	} else if (msg == `Przegrałeś :((`)  {
-		document.getElementById('messages').appendChild(div).style.color = 'red'; 
+		createMessages.appendChild(div).style.color = 'red'; 
 	} else if (msg == `Remis`) {
-		document.getElementById('messages').appendChild(div).style.color = 'grey';
+		createMessages.appendChild(div).style.color = 'grey';
 	} else {
-		document.getElementById('messages').appendChild(div);
+		createMessages.appendChild(div);
 	}
 }
 
 function clearMessages(){
-	document.getElementById('messages').innerHTML = '';
+	const createMessages = document.getElementById('messages');
+	createMessages.innerHTML = '';
 }
 
 function showResult() {
-	printMessage(`Rozegrane partie ${gamePlayed}`);
-	printMessage(`Wygrane partie: ${gameWon}`);
-	printMessage(`Przegrane partie: ${gameLost}`);
-	printMessage(`Remis: ${gameDrew}`);
+	printMessage(`Rozegrane partie ${game.played}`);
+	printMessage(`Wygrane partie: ${game.won}`);
+	printMessage(`Przegrane partie: ${game.lost}`);
+	printMessage(`Remis: ${game.drew}`);
 }
 
 function getMoveName(argMoveId){
@@ -34,40 +36,40 @@ function getMoveName(argMoveId){
   }
 
 function displayResult(argComputerMove, argPlayerMove){
-	gamePlayed++;
+	game.played++;
 	printMessage(`Zagrałem ${argComputerMove}, a Ty ${argPlayerMove}`);
   
 	if (argPlayerMove == `papier` && argComputerMove == `kamień`) {
 		printMessage(`Wygrałeś!!!`);
-		gameWon++;
+		game.won++;
 	} else if (argPlayerMove == `papier` && argComputerMove == `nożyce`) {
 		printMessage(`Przegrałeś :((`);
-		gameLost++;
+		game.lost++;
 	} else if (argPlayerMove == `kamień` && argComputerMove == `papier`) {
 		printMessage(`Przegrałeś :((`);
-		gameLost++;
+		game.lost++;
 	} else if (argPlayerMove == `kamień` && argComputerMove == `nożyce`) {
 		printMessage(`Wygrałeś!!!`);
-		gameWon++;
+		game.won++;
 	} else if (argPlayerMove == `nożyce` && argComputerMove == `kamień`) {
 		printMessage(`Przegrałeś :((`);
-		gameLost++;
+		game.lost++;
 	} else if (argPlayerMove == `nożyce` && argComputerMove == `papier`) {
 		printMessage(`Wygrałeś!!!`);
-		gameWon++;
+		game.won++;
 	} 
 	else  {
 		printMessage(`Remis`);
-		gameDrew++;
+		game.drew++;
 	}
 }
 
 function playGame(playerInput) {
-	let randomNumber = Math.floor(Math.random() * 3 + 1);
-	let computerMove = getMoveName(randomNumber);
-	let playerMove = getMoveName(playerInput);
+	let randomNumber = Math.floor(Math.random() * 3 + 1),
+		computerMove = getMoveName(randomNumber),
+		playerMove = getMoveName(playerInput);
 	clearMessages();
 	getMoveName();
 	displayResult(computerMove, playerMove);
-	showResult()
+	showResult();
 }

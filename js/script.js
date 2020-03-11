@@ -1,17 +1,24 @@
-let gamePlayed = 0;
-let gameWon = 0;
-let gameLost = 0;
-let gameDrew = 0;
+let game = {
+	played: 0,
+	won: 0,
+	lost: 0,
+	drew: 0,
+};
 
+const play = {
+	rock: document.getElementById('play-rock'),
+	paper: document.getElementById('play-paper'),
+	scissors: document.getElementById('play-scissors'),
+};
 
-
-document.getElementById('play-rock').addEventListener('click', function() {
+play.rock.addEventListener('click', function() {
 	playGame(1);
 });
-document.getElementById('play-paper').addEventListener('click', function() {
+
+play.paper.addEventListener('click', function() {
 	playGame(2);
 });
-document.getElementById('play-scissors').addEventListener('click', function() {
+play.scissors.addEventListener('click', function() {
 	playGame(3);
 });
 
